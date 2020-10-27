@@ -4,4 +4,6 @@
 
 * `npm install` to install all dependencies.
 
-* `nodemon app.js` to run the application.
+* `node app.js` to run the application.
+OR
+* `nodemon app.js` to monitor for any changes in your source and automatically restart your server.
