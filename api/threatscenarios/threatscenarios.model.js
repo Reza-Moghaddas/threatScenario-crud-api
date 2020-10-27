@@ -18,15 +18,21 @@ const ThreatScenarioSchema = new Schema({
       },
       impact : {
          type: Number,
+         min:0,
+         max:3,
          default: true
       },
       likelihood : {
         type: Number,
+        min:0,
+        max:3,         
         default: true
      },
      riskLevel : {
         type: Number,
-        default: true
+        default: function() {
+         return (this.impact + this.likelihood) / 2
+       }
      }
 },{
      id: false,

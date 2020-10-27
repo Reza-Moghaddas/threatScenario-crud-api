@@ -35,17 +35,21 @@ res.status(200).json({ message: "threat scenarioId Details fetched Successfully"
        },
        update: (req, res)=>{
             const threatScenarioId = req.params.id;
+            console.log(threatScenarioId);
             ThreatScenario
             .findByIdAndUpdate(threatScenarioId, { $set: req.body })
+
             .exec((err, threatScenarioDetails) => {
+                 console.log(threatScenarioDetails);
                  if (err) res.status(500).json({message : err})
                  res.status(200).json({ message: "threat scenarioId updated"});
             })
-       },
+       },       
        delete: (req, res)=>{
             const threatScenarioId = req.params.id;
             ThreatScenario
-            .findByIdAndUpdate(threatScenarioId, { $set: { is_active: false}})
+            .findOne({_id:threatScenarioId})
+            .remove()                        
             .exec((err, threatScenarioDetails) => {
                  if (err) res.status(500).json({message : err})
             
